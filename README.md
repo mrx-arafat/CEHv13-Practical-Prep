@@ -105,7 +105,7 @@ docs/
 ### During Exam
 - **Quick reference:** `docs/QUICK-START.md`
 - **All commands:** `docs/tools-reference/TOOLS-COMPLETE-REFERENCE.md`
-- **Challenge examples:** `docs/challenges/all-challenges.md`
+- **Challenge examples:** https://mrx-arafat.github.io/CEHv13-Practical-Prep/docs/challenges/all-challenges.html
 - **Domain-specific:** `docs/domain-N-*/challenges.md`
 
 ### Search During Exam

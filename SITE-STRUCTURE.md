@@ -229,7 +229,7 @@ docs/
 |  | domain-*/challenges.md | Examples | 7 | Challenge solutions |
 | Tools Reference | index.md | Hub | 1 | Tools categorized |
 |  | TOOLS-COMPLETE-REFERENCE.md | Reference | 1 | Complete tool guide |
-| Other | challenges/all-challenges.md | Index | 1 | All challenges |
+| Other | docs/challenges/all-challenges.html | Index | 1 | All challenges |
 |  | COMPLETION-REPORT.md | Report | 1 | Study progress |
 | **TOTAL** | | | **30+** | Complete exam guide |
 

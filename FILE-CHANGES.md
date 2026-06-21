@@ -193,7 +193,7 @@ docs/domain-*/challenges.md (7 files)
 ├─ Domain 1, 2, 3, 4, 5, 6, 7
 └─ Content: UNCHANGED
 
-docs/challenges/all-challenges.md
+docs/docs/challenges/all-challenges.html
 ├─ Status: Preserved
 └─ Content: UNCHANGED
 

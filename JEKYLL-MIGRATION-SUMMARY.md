@@ -320,7 +320,7 @@ bundle exec jekyll serve
 ✓ docs/COMPLETION-REPORT.md (Maintained)
 ✓ docs/domain-*/commands.md (6 files, content preserved)
 ✓ docs/domain-*/challenges.md (7 files, content preserved)
-✓ docs/challenges/all-challenges.md (Preserved)
+✓ docs/docs/challenges/all-challenges.html (Preserved)
 ✓ docs/tools-reference/TOOLS-COMPLETE-REFERENCE.md (Preserved)
 ```
 
