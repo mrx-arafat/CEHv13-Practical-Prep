@@ -1,3 +1,11 @@
+---
+layout: default
+title: Commands
+parent: Domain 2 - System Hacking & Exploitation
+grand_parent: Domains
+nav_order: 1
+---
+
 # Domain 2: Commands Reference
 
 ## RDP Cracking

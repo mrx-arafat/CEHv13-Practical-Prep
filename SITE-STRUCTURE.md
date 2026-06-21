@@ -322,9 +322,9 @@ http://localhost:4000/domains/domain-1-network-scanning/
 
 ### GitHub Pages
 ```
-https://mrx-arafat.github.io/mrx-arafat-CEHv13-Practical-Prep
-https://mrx-arafat.github.io/mrx-arafat-CEHv13-Practical-Prep/quick-start/
-https://mrx-arafat.github.io/mrx-arafat-CEHv13-Practical-Prep/domains/
+https://mrx-arafat.github.io/CEHv13-Practical
+https://mrx-arafat.github.io/CEHv13-Practical/quick-start/
+https://mrx-arafat.github.io/CEHv13-Practical/domains/
 ```
 
 ---

@@ -1,3 +1,11 @@
+---
+layout: default
+title: Challenges
+parent: Domain 1 - Network Scanning & Enumeration
+grand_parent: Domains
+nav_order: 2
+---
+
 # Domain 1: Challenge Examples
 
 ## Challenge 1: Find Domain Controller DNS Name
@@ -186,4 +194,4 @@ smbclient -L 192.168.1.5
 
 ---
 
-**Next:** Review [advanced.md](advanced.html) for deeper topics, or move to [Domain 2](../domain-2-system-hacking/)
+**Next:** Move to [Domain 2](../domain-2-system-hacking/)

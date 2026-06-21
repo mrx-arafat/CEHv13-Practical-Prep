@@ -1,3 +1,11 @@
+---
+layout: default
+title: Commands
+parent: Domain 1 - Network Scanning & Enumeration
+grand_parent: Domains
+nav_order: 1
+---
+
 # Domain 1: Commands Reference
 
 ## Host Discovery

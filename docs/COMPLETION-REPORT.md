@@ -1,3 +1,9 @@
+---
+layout: default
+title: Completion Report
+nav_order: 7
+---
+
 # CEH v13 Documentation - Reorganization Complete
 
 **Date:** June 21, 2026  

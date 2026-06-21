@@ -88,10 +88,9 @@ airmon-ng stop wlan0mon
 
 ## See Also
 
-- **[Commands Reference](commands.html)**
 - **[Challenges](challenges.html)**
 - **[QUICK-START.md](../QUICK-START.html)** - Time management
 
 ---
 
-**Next Step:** Review [commands.md](commands.html) and practice [challenges.md](challenges.html)
+**Next Step:** Practice [challenges.md](challenges.html)

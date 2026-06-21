@@ -2,7 +2,7 @@
 
 **Comprehensive open-book reference guide for CEH v13 Practical Exam**
 
-🔗 **LIVE SITE:** https://mrx-arafat.github.io/CEHv13-Practical-Prep/docs/
+🔗 **LIVE SITE:** https://mrx-arafat.github.io/CEHv13-Practical/docs/
 
 - **20 Real Challenge Examples** - Step-by-step solutions
 - **7 Exam Domains** - 100% syllabus coverage
@@ -105,7 +105,7 @@ docs/
 ### During Exam
 - **Quick reference:** `docs/QUICK-START.md`
 - **All commands:** `docs/tools-reference/TOOLS-COMPLETE-REFERENCE.md`
-- **Challenge examples:** https://mrx-arafat.github.io/CEHv13-Practical-Prep/docs/challenges/all-challenges.html
+- **Challenge examples:** https://mrx-arafat.github.io/CEHv13-Practical/docs/challenges/all-challenges.html
 - **Domain-specific:** `docs/domain-N-*/challenges.md`
 
 ### Search During Exam

@@ -101,11 +101,10 @@ wpscan --url http://target.com -U admin -P rockyou.txt    # Brute force
 
 ## See Also
 
-- **[Commands Reference](commands.html)**
 - **[Challenges](challenges.html)**
 - **[Domain 1: Network Scanning](../domain-1-network-scanning/)**
 - **[Domain 4: Cryptography](../domain-4-cryptography/)**
 
 ---
 
-**Next Step:** Review [commands.md](commands.html) and practice [challenges.md](challenges.html)
+**Next Step:** Practice [challenges.md](challenges.html)

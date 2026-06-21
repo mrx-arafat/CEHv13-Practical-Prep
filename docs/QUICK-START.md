@@ -1,3 +1,9 @@
+---
+layout: default
+title: Quick Start Reference
+nav_order: 6
+---
+
 # QUICK-START: During-Exam Reference Guide
 
 **Use this guide on exam day for quick answers to common questions.**

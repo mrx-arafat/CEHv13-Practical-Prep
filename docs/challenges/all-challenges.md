@@ -1,3 +1,9 @@
+---
+layout: default
+title: All Challenges
+nav_order: 5
+---
+
 # All 20 Challenge Examples with Solutions
 
 ## By Domain

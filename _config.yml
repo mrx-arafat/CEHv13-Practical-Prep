@@ -38,7 +38,7 @@ color_scheme: light
 # Just the Docs customization
 aux_links:
   "GitHub Repository":
-    - "https://github.com/mrx-arafat/mrx-arafat-CEHv13-Practical-Prep"
+    - "https://github.com/mrx-arafat/CEHv13-Practical"
   "ExamGuide.com":
     - "https://cehv13.examguide.com"
 

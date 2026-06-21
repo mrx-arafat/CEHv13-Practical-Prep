@@ -242,11 +242,10 @@ tshark -r capture.pcapng -Y "mqtt.msgtype == 3" -T fields -e mqtt.topic
 
 ## See Also
 
-- **[Commands Reference](commands.html)**
 - **[Challenges](challenges.html)**
 - **[Domain 2: System Hacking](../domain-2-system-hacking/)** - RAT detection
 - **[QUICK-START.md](../QUICK-START.html)** - Common filters
 
 ---
 
-**Next Step:** Review [commands.md](commands.html) and practice [challenges.md](challenges.html)
+**Next Step:** Practice [challenges.md](challenges.html)

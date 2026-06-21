@@ -348,7 +348,7 @@ git commit -m "docs: Migrate to just-the-docs theme with professional styling"
 git push origin main
 
 # Site automatically builds and deploys
-# Visit: https://mrx-arafat.github.io/mrx-arafat-CEHv13-Practical-Prep
+# Visit: https://mrx-arafat.github.io/CEHv13-Practical
 ```
 
 ---

@@ -310,7 +310,6 @@ nslookup 192.168.1.5
 
 - **[Commands Reference](commands.html)** - All Domain 1 commands
 - **[Challenges](challenges.html)** - Real exam challenge examples
-- **[Advanced Topics](advanced.html)** - Deep dives into specific areas
 - **[Back to Index](../index.html)**
 
 ---

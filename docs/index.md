@@ -81,7 +81,7 @@ This documentation is designed as an **open-book reference during your 6-hour pr
 
 - **[QUICK-START.md](QUICK-START.html)** - How to use during exam (time management, answer format)
 - **[TOOLS-COMPLETE-REFERENCE.md](tools-reference/TOOLS-COMPLETE-REFERENCE.html)** - All 85+ tools with commands
-- **[Challenges](challenges/)** - All 20 challenge examples organized by domain
+- **[Challenges](challenges/all-challenges.html)** - All 20 challenge examples organized by domain
 
 ---
 

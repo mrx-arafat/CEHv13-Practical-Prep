@@ -1,3 +1,10 @@
+---
+layout: default
+title: Complete Tools Reference
+parent: Tools Reference
+nav_order: 1
+---
+
 # Complete Tools Reference (85+ Tools)
 
 **Use Ctrl+F to search for specific tools during exam.**
