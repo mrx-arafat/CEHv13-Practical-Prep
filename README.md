@@ -2,11 +2,14 @@
 
 **Comprehensive open-book reference guide for CEH v13 Practical Exam**
 
+🔗 **LIVE SITE:** https://mrx-arafat.github.io/CEHv13-Practical-Prep/docs/
+
 - **20 Real Challenge Examples** - Step-by-step solutions
 - **7 Exam Domains** - 100% syllabus coverage
 - **85+ Tools Documented** - 250+ commands
 - **6-Hour Strategy** - Time management guide
-- **GitHub Pages Ready** - Offline accessible
+- **Professional Theme** - Clean, organized, searchable
+- **Mobile Friendly** - Access anywhere during exam
 
 ---
 
