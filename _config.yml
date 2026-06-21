@@ -31,6 +31,12 @@ plugins:
   - jekyll-seo-tag
   - jekyll-github-metadata
 
+# SCSS Processing
+sass:
+  style: compressed
+  load_paths:
+    - _sass
+
 # Color scheme (light, dark, auto)
 color_scheme: light
 
@@ -62,6 +68,13 @@ footer_content: |
 # Back to top link
 back_to_top: true
 back_to_top_text: "Back to top"
+
+# Custom styling
+sass:
+  style: compressed
+
+# Custom CSS
+custom_css_path: /assets/css/custom.css
 
 # Callouts (previously mermaid)
 callouts_enabled: true
