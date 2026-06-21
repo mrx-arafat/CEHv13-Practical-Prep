@@ -62,8 +62,10 @@ toc_levels: 2..3
 
 # Footer
 footer_content: |
-  Copyright &copy; 2026. CEH v13 Practical Exam Study Guide.
-  Last updated: June 2026. 20 Challenges | 7 Domains | 85+ Tools | 6 Hours Exam
+  <strong>CEH v13 Practical Exam Study Manual</strong><br>
+  Created by <a href="https://www.arafatops.com" target="_blank" style="color: #667eea; font-weight: 600;">Easin Arafat</a><br>
+  &copy; 2026 | 20 Challenges | 7 Domains | 85+ Tools | 6 Hours Exam<br>
+  <small>Last updated: June 2026</small>
 
 # Back to top link
 back_to_top: true
