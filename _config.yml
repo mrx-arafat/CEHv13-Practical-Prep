@@ -4,16 +4,22 @@ title: CEH v13 Practical Exam - Complete Study Manual
 description: Comprehensive open-book reference guide for CEH v13 Practical Exam (20 challenges, 7 domains, 85+ tools)
 author: mrx-arafat
 email: arafatmrx@gmail.com
+url: https://mrx-arafat.github.io/mrx-arafat-CEHv13-Practical-Prep
 
 # GitHub Pages settings
-remote_theme: just-the-docs/just-the-docs
 markdown: kramdown
+theme: jekyll-default
+
+# Build settings
+source: .
+destination: _site
+incremental: false
 
 # Navigation
 nav_order: 1
 has_children: false
 
-# Color scheme (light or dark)
+# Color scheme
 color_scheme: light
 
 # Search
@@ -25,17 +31,13 @@ footer_content: "CEH v13 Practical Exam Study Guide | 20 Challenges | 7 Domains 
 
 # Exclude from Jekyll
 exclude:
+  - .git
   - .gitignore
-  - README.md
-  - LICENSE
   - notes/
   - '*.pdf'
+  - node_modules
+  - vendor
 
-# Collections
-collections:
-  domains:
-    output: true
-    permalink: /:collection/:path/
-  challenges:
-    output: true
-    permalink: /:collection/:path/
+# Include docs folder
+include:
+  - docs
