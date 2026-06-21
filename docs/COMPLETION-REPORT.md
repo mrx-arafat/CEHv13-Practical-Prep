@@ -214,17 +214,17 @@ Each domain has:
 ## Next Steps
 
 ### For Study
-1. Review **[index.md](index.md)** - 5 minutes
-2. Read **[QUICK-START.md](QUICK-START.md)** - 10 minutes
+1. Review **[index.md](index.html)** - 5 minutes
+2. Read **[QUICK-START.md](QUICK-START.html)** - 10 minutes
 3. Pick weakest domain, study README + commands - 30 minutes
 4. Work through challenges in that domain - 30 minutes
 5. Repeat for other domains
 
 ### For Exam Day
-1. Open **[QUICK-START.md](QUICK-START.md)** in browser
-2. Have **[TOOLS-COMPLETE-REFERENCE.md](tools-reference/TOOLS-COMPLETE-REFERENCE.md)** tab ready
+1. Open **[QUICK-START.md](QUICK-START.html)** in browser
+2. Have **[TOOLS-COMPLETE-REFERENCE.md](tools-reference/TOOLS-COMPLETE-REFERENCE.html)** tab ready
 3. Use Ctrl+F to search as needed
-4. Refer to **[all-challenges.md](challenges/all-challenges.md)** for similar examples
+4. Refer to **[all-challenges.md](challenges/all-challenges.html)** for similar examples
 
 ### Optional: Publish to GitHub Pages
 ```bash
@@ -278,4 +278,4 @@ For questions during exam:
 
 ---
 
-**Start here:** [📖 index.md](index.md) or [⏱️ QUICK-START.md](QUICK-START.md)
+**Start here:** [📖 index.md](index.html) or [⏱️ QUICK-START.md](QUICK-START.html)

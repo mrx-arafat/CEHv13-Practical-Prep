@@ -171,11 +171,11 @@ exiftool image.jpg | grep -i "gps\|date"
 
 ## See Also
 
-- **[Commands Reference](commands.md)**
-- **[Challenges](challenges.md)**
-- **[Domain 4: Cryptography](../domain-4-cryptography/README.md)**
-- **[Domain 6: Traffic Analysis](../domain-6-traffic-analysis/README.md)**
+- **[Commands Reference](commands.html)**
+- **[Challenges](challenges.html)**
+- **[Domain 4: Cryptography](../domain-4-cryptography/)**
+- **[Domain 6: Traffic Analysis](../domain-6-traffic-analysis/)**
 
 ---
 
-**Next Step:** Review [commands.md](commands.md) and practice [challenges.md](challenges.md)
+**Next Step:** Review [commands.md](commands.html) and practice [challenges.md](challenges.html)

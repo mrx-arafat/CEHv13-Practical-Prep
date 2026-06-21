@@ -308,11 +308,11 @@ nslookup 192.168.1.5
 
 ## See Also
 
-- **[Commands Reference](commands.md)** - All Domain 1 commands
-- **[Challenges](challenges.md)** - Real exam challenge examples
-- **[Advanced Topics](advanced.md)** - Deep dives into specific areas
-- **[Back to Index](../index.md)**
+- **[Commands Reference](commands.html)** - All Domain 1 commands
+- **[Challenges](challenges.html)** - Real exam challenge examples
+- **[Advanced Topics](advanced.html)** - Deep dives into specific areas
+- **[Back to Index](../index.html)**
 
 ---
 
-**Next Step:** Review [commands.md](commands.md) to practice syntax, then work through [challenges.md](challenges.md) for real examples.
+**Next Step:** Review [commands.md](commands.html) to practice syntax, then work through [challenges.md](challenges.html) for real examples.

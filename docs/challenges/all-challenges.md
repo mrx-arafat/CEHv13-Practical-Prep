@@ -302,10 +302,10 @@ DOMAIN 7: Wireless
 ---
 
 **See individual domain folders for detailed challenge solutions:**
-- [Domain 1 Challenges](../domain-1-network-scanning/challenges.md)
-- [Domain 2 Challenges](../domain-2-system-hacking/challenges.md)
-- [Domain 3 Challenges](../domain-3-web-hacking/challenges.md)
-- [Domain 4 Challenges](../domain-4-cryptography/challenges.md)
-- [Domain 5 Challenges](../domain-5-mobile-iot/challenges.md)
-- [Domain 6 Challenges](../domain-6-traffic-analysis/challenges.md)
-- [Domain 7 Challenges](../domain-7-wireless/challenges.md)
+- [Domain 1 Challenges](../domain-1-network-scanning/challenges.html)
+- [Domain 2 Challenges](../domain-2-system-hacking/challenges.html)
+- [Domain 3 Challenges](../domain-3-web-hacking/challenges.html)
+- [Domain 4 Challenges](../domain-4-cryptography/challenges.html)
+- [Domain 5 Challenges](../domain-5-mobile-iot/challenges.html)
+- [Domain 6 Challenges](../domain-6-traffic-analysis/challenges.html)
+- [Domain 7 Challenges](../domain-7-wireless/challenges.html)

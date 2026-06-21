@@ -217,11 +217,11 @@ Look for: Reverse TCP connection, unusual port, long duration
 
 ## See Also
 
-- **[Commands Reference](commands.md)** - Hydra, Metasploit syntax
-- **[Challenges](challenges.md)** - Real RDP cracking examples
-- **[Domain 1: Scanning](../domain-1-network-scanning/README.md)**
-- **[Domain 6: Traffic Analysis](../domain-6-traffic-analysis/README.md)** - RAT detection
+- **[Commands Reference](commands.html)** - Hydra, Metasploit syntax
+- **[Challenges](challenges.html)** - Real RDP cracking examples
+- **[Domain 1: Scanning](../domain-1-network-scanning/)**
+- **[Domain 6: Traffic Analysis](../domain-6-traffic-analysis/)** - RAT detection
 
 ---
 
-**Next Step:** Review [commands.md](commands.md), then practice [challenges.md](challenges.md)
+**Next Step:** Review [commands.md](commands.html), then practice [challenges.md](challenges.html)

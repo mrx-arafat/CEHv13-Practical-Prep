@@ -224,16 +224,16 @@ exiftool --version
 
 Browse detailed documentation for each tool:
 
-- **[Network Tools](network-tools.md)** - NMAP, Enum4linux, SNMP, DNS
-- **[Cracking Tools](cracking-tools.md)** - Hydra, Hashcat, John the Ripper
-- **[Web Tools](web-tools.md)** - SQLMAP, Nikto, Burp Suite, WPScan
-- **[Crypto Tools](crypto-tools.md)** - Steghide, DIE, Exiftool, VeraCrypt
-- **[Analysis Tools](analysis-tools.md)** - Wireshark, Tshark, Tcpdump
-- **[Wireless Tools](wireless-tools.md)** - Aircrack-ng, Airmon-ng, Airodump-ng
-- **[Mobile Tools](mobile-tools.md)** - ADB, SQLite3, Apktool
+- **[Network Tools](network-tools.html)** - NMAP, Enum4linux, SNMP, DNS
+- **[Cracking Tools](cracking-tools.html)** - Hydra, Hashcat, John the Ripper
+- **[Web Tools](web-tools.html)** - SQLMAP, Nikto, Burp Suite, WPScan
+- **[Crypto Tools](crypto-tools.html)** - Steghide, DIE, Exiftool, VeraCrypt
+- **[Analysis Tools](analysis-tools.html)** - Wireshark, Tshark, Tcpdump
+- **[Wireless Tools](wireless-tools.html)** - Aircrack-ng, Airmon-ng, Airodump-ng
+- **[Mobile Tools](mobile-tools.html)** - ADB, SQLite3, Apktool
 
 ---
 
-**Note:** Detailed tool documentation is in the **[Complete Tools Reference](TOOLS-COMPLETE-REFERENCE.md)** page.
+**Note:** Detailed tool documentation is in the **[Complete Tools Reference](TOOLS-COMPLETE-REFERENCE.html)** page.
 
-Start with the [Quick Start Guide](../quick-start/tools-cheat.md) or pick a domain above.
+Start with the [Quick Start Guide](../quick-start/tools-cheat.html) or pick a domain above.

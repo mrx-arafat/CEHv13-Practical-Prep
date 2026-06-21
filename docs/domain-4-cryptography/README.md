@@ -151,10 +151,10 @@ veracrypt --mount /dev/sdb1 /mnt/encrypted --password=PASSWORD
 
 ## See Also
 
-- **[Commands Reference](commands.md)**
-- **[Challenges](challenges.md)**
-- **[Domain 2: System Hacking](../domain-2-system-hacking/README.md)**
+- **[Commands Reference](commands.html)**
+- **[Challenges](challenges.html)**
+- **[Domain 2: System Hacking](../domain-2-system-hacking/)**
 
 ---
 
-**Next Step:** Review [commands.md](commands.md) and practice [challenges.md](challenges.md)
+**Next Step:** Review [commands.md](commands.html) and practice [challenges.md](challenges.html)

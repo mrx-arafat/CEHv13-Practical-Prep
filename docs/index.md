@@ -39,48 +39,48 @@ This documentation is designed as an **open-book reference during your 6-hour pr
 
 ### By Domain
 
-1. **[Domain 1: Network Scanning & Enumeration](domain-1-network-scanning/README.md)**
+1. **[Domain 1: Network Scanning & Enumeration](domain-1-network-scanning/)**
    - Host discovery, port scanning, service detection
    - SMB, SNMP, DNS enumeration
    - Commands, challenges, advanced topics
 
-2. **[Domain 2: System Hacking & Exploitation](domain-2-system-hacking/README.md)**
+2. **[Domain 2: System Hacking & Exploitation](domain-2-system-hacking/)**
    - Remote Access Trojans (RAT), Metasploit, persistence
    - RDP cracking, credential harvesting
    - Commands, challenges, malware analysis
 
-3. **[Domain 3: Web Server & Application Hacking](domain-3-web-hacking/README.md)**
+3. **[Domain 3: Web Server & Application Hacking](domain-3-web-hacking/)**
    - SQL injection, web directory enumeration
    - Parameter tampering, WordPress exploitation
    - Commands, challenges, DVWA workflows
 
-4. **[Domain 4: Cryptography & Steganography](domain-4-cryptography/README.md)**
+4. **[Domain 4: Cryptography & Steganography](domain-4-cryptography/)**
    - Hash cracking (Hashcat, John), steganography
    - PE file analysis (DIE, CFF Explorer)
    - VeraCrypt volume cracking
    - Commands, challenges, analysis tools
 
-5. **[Domain 5: Mobile & IoT Security](domain-5-mobile-iot/README.md)**
+5. **[Domain 5: Mobile & IoT Security](domain-5-mobile-iot/)**
    - Android device access via ADB
    - Steganography extraction, database analysis
    - Advanced workflows, photo extraction
    - Commands, challenges, security analysis
 
-6. **[Domain 6: Traffic Analysis & Sniffing](domain-6-traffic-analysis/README.md)**
+6. **[Domain 6: Traffic Analysis & Sniffing](domain-6-traffic-analysis/)**
    - Wireshark packet analysis, Tcpdump capture
    - Tshark CLI analysis, protocol inspection
    - DDoS detection, TTL fingerprinting, MQTT analysis
    - Commands, challenges, real-world scenarios
 
-7. **[Domain 7: Wireless Network Cracking](domain-7-wireless/README.md)**
+7. **[Domain 7: Wireless Network Cracking](domain-7-wireless/)**
    - WPA/WPA2 password cracking (Aircrack-ng)
    - Wireless attack workflow
    - Commands, challenges, monitoring mode
 
 ### Quick Reference
 
-- **[QUICK-START.md](QUICK-START.md)** - How to use during exam (time management, answer format)
-- **[TOOLS-COMPLETE-REFERENCE.md](tools-reference/TOOLS-COMPLETE-REFERENCE.md)** - All 85+ tools with commands
+- **[QUICK-START.md](QUICK-START.html)** - How to use during exam (time management, answer format)
+- **[TOOLS-COMPLETE-REFERENCE.md](tools-reference/TOOLS-COMPLETE-REFERENCE.html)** - All 85+ tools with commands
 - **[Challenges](challenges/)** - All 20 challenge examples organized by domain
 
 ---
@@ -185,4 +185,4 @@ docs/
 
 ---
 
-**Start with:** [QUICK-START.md](QUICK-START.md) or pick a domain above
+**Start with:** [QUICK-START.md](QUICK-START.html) or pick a domain above

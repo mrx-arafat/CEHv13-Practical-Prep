@@ -186,4 +186,4 @@ smbclient -L 192.168.1.5
 
 ---
 
-**Next:** Review [advanced.md](advanced.md) for deeper topics, or move to [Domain 2](../domain-2-system-hacking/README.md)
+**Next:** Review [advanced.md](advanced.html) for deeper topics, or move to [Domain 2](../domain-2-system-hacking/)

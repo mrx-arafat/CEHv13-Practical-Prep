@@ -22,11 +22,11 @@ This section contains everything you need to manage your 6-hour exam efficiently
 
 ## Quick Navigation
 
-- [Time Management Strategy](time-strategy.md) - Hour-by-hour breakdown
-- [Critical Commands](critical-commands.md) - Commands to memorize
-- [Answer Formatting](answer-formatting.md) - Format examples by domain
-- [Decision Tree](decision-tree.md) - Troubleshooting when stuck
-- [Tools Cheat Sheet](tools-cheat.md) - Quick command reference
+- [Time Management Strategy](time-strategy.html) - Hour-by-hour breakdown
+- [Critical Commands](critical-commands.html) - Commands to memorize
+- [Answer Formatting](answer-formatting.html) - Format examples by domain
+- [Decision Tree](decision-tree.html) - Troubleshooting when stuck
+- [Tools Cheat Sheet](tools-cheat.html) - Quick command reference
 
 ## Key Exam Facts
 
@@ -62,4 +62,4 @@ This section contains everything you need to manage your 6-hour exam efficiently
 
 ---
 
-Start with the [Time Management Strategy](time-strategy.md) or jump to [Critical Commands](critical-commands.md).
+Start with the [Time Management Strategy](time-strategy.html) or jump to [Critical Commands](critical-commands.html).
