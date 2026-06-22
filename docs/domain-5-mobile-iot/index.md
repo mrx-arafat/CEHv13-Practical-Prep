@@ -15,16 +15,17 @@ Mobile devices and IoT systems often store sensitive data. Learning to extract a
 
 **Key Topics:**
 - Android device access via ADB
-- APK installation and analysis
+- APK installation and static analysis (decompiling, hardcoded secrets)
 - Database extraction and analysis
 - Steganography in photos
 - Logcat analysis
-- Protected directory access
 - SQLite database queries
+- IoT protocols — MQTT broker interaction
+- Firmware analysis (binwalk) and IoT device discovery (Shodan)
 
 **Duration:** 15-25 minutes per task  
 **Difficulty:** Medium  
-**Tools:** ADB, sqlite3, exiftool, steghide
+**Tools:** ADB, sqlite3, exiftool, steghide, apktool, jadx, mosquitto, binwalk
 
 ---
 
@@ -194,6 +195,111 @@ adb shell input swipe 100 500 100 100
 exiftool image.jpg
 exiftool image.jpg | grep -i "gps\|date"
 ```
+
+---
+
+## 5.7 APK Static Analysis
+
+### What It Does
+
+An APK (an Android app's install file) is just a ZIP archive of code and resources. Pulling it apart lets you read the app's permissions, configuration, and — the usual exam goal — **hardcoded secrets** the developer left inside (API keys, passwords, URLs).
+
+> **In plain English:** the app ships with its own source baked in. Unzip it, decompile it, and read the developer's secrets straight off the page.
+
+### Get the APK off the Device
+
+```bash
+# Find the package, then its APK path
+adb shell pm list packages | grep -i target
+adb shell pm path com.example.app          # prints /data/app/.../base.apk
+adb pull /data/app/com.example.app-1/base.apk ./app.apk
+```
+
+### Decompile & Read
+
+```bash
+# apktool — unpacks resources + AndroidManifest into readable form
+apktool d app.apk -o app_src
+
+# Read the manifest (permissions, components, exported activities)
+cat app_src/AndroidManifest.xml
+
+# jadx — decompile DEX bytecode back to readable Java
+jadx -d app_out app.apk
+jadx-gui app.apk                           # GUI to browse the code
+```
+
+### Hunt for Secrets
+
+```bash
+# Grep the decompiled source for hardcoded creds/keys/URLs
+grep -riE "password|api[_-]?key|secret|token|http://|https://" app_src/ app_out/
+
+# strings.xml often holds keys and endpoints
+cat app_src/res/values/strings.xml
+```
+
+> **Exam tip:** the flag is usually a hardcoded API key, password, or hidden URL in `strings.xml` or a decompiled `.java` file. `grep -ri` for `key`/`password`/`token` finds it fast.
+
+---
+
+## 5.8 IoT — MQTT, Firmware & Device Discovery
+
+### What It Does
+
+IoT (Internet of Things — smart devices like cameras, sensors, locks) devices are weakly secured embedded computers. The exam tasks: talk to their messaging broker (MQTT), pull secrets out of their firmware, or find exposed devices on the internet.
+
+### MQTT Broker Interaction
+
+MQTT (a lightweight publish/subscribe protocol IoT devices chat over) brokers on port **1883** are usually unauthenticated. Subscribe to read everything; publish to inject commands.
+
+```bash
+# Subscribe to ALL topics on the broker (# = wildcard) — read live device data
+mosquitto_sub -h 192.168.1.50 -t "#" -v
+
+# Subscribe to a specific topic
+mosquitto_sub -h 192.168.1.50 -t "home/sensors/temp"
+
+# Publish (send a command to a device)
+mosquitto_pub -h 192.168.1.50 -t "home/lock" -m "unlock"
+
+# With credentials, if required
+mosquitto_sub -h 192.168.1.50 -u admin -P password -t "#" -v
+```
+
+> **Exam tip:** `mosquitto_sub -t "#" -v` dumps every topic + message — the flag is usually sitting in one of them. (`-v` prints the topic name alongside each message.)
+
+### Firmware Analysis
+
+Firmware (the software baked into a device) often hides credentials, keys, and config in its filesystem.
+
+```bash
+# Inspect what's inside a firmware image
+binwalk firmware.bin
+
+# Extract the embedded filesystem
+binwalk -e firmware.bin
+
+# Then grep the extracted files for secrets
+grep -riE "password|admin|root|key" _firmware.bin.extracted/
+
+# Pull any readable strings (passwords, URLs, versions)
+strings firmware.bin | grep -iE "password|http|admin"
+```
+
+### IoT Device Discovery (Shodan)
+
+Shodan (a search engine for internet-connected devices) finds exposed IoT gear by banner, port, and product.
+
+```
+# Shodan search filters (web or CLI)
+port:1883                      # Exposed MQTT brokers
+product:"MQTT"                 # MQTT by product banner
+"default password" port:23     # Telnet devices advertising defaults
+webcam city:"London"           # Exposed webcams in a location
+```
+
+> **Exam tip:** IoT devices frequently ship with **default credentials** (`admin:admin`, `root:root`, `admin:password`). Always try these first against any IoT login.
 
 ---
 
