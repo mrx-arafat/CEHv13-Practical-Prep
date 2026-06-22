@@ -30,14 +30,22 @@ Encryption protects data. Hash cracking recovers passwords. Steganography hides 
 
 ## 4.1 Hash Cracking
 
+### What It Does
+
+A hash (a one-way fingerprint of data, like a password) can't be reversed, so cracking means hashing millions of guesses until one matches. Think of it like trying every key on a giant keyring until one opens the lock.
+
 ### Identify Hash Type
 
+Before cracking, you need to know *what kind* of hash it is so you pick the right setting. `hashid` looks at the hash's shape and tells you.
+
 ```bash
-hashid hash_value
-hashid -e hash_value
+hashid hash_value      # Guess the hash type
+hashid -e hash_value   # Also show the matching Hashcat mode
 ```
 
 ### Hash Types Reference
+
+The "Length" (number of characters) is the easiest way to spot a hash type by eye. The "Mode" is the `-m` number you feed Hashcat.
 
 | Type | Length | Mode (Hashcat) |
 |------|--------|----------------|
@@ -48,6 +56,10 @@ hashid -e hash_value
 | bcrypt | 60 | 3200 |
 
 ### Cracking Commands
+
+`-m` picks the hash type (see the table above), `-a 0` means "wordlist attack," and `rockyou.txt` is the famous list of real leaked passwords to try.
+
+> **Exam tip:** wrong `-m` number = nothing cracks. Always confirm the hash type first with `hashid`.
 
 ```bash
 # MD5
@@ -62,14 +74,18 @@ hashcat -m 1400 -a 0 hashfile rockyou.txt
 # NTLM Windows
 hashcat -m 1000 -a 0 hashfile rockyou.txt
 
-# Using John
-john hashes.txt --wordlist=rockyou.txt
-john --show hashes.txt
+# Using John (John the Ripper, another cracker)
+john hashes.txt --wordlist=rockyou.txt   # Crack the hashes
+john --show hashes.txt                    # Show cracked passwords
 ```
 
 ---
 
 ## 4.2 Steganography Extraction
+
+### What It Does
+
+Steganography (hiding secret data inside an ordinary file like a photo) means the image looks normal but carries hidden text. `steghide` pulls that hidden payload back out, usually after you give it a passphrase.
 
 ```bash
 # Check if image contains hidden data
@@ -84,7 +100,7 @@ steghide extract -sf image.jpg -p ""
 # Extract to specific file
 steghide extract -sf image.jpg -xf output.txt -p ""
 
-# Crack steganography
+# Crack the passphrase if you don't know it (tries each word in the list)
 stegcracker image.jpg wordlist.txt
 ```
 
@@ -92,7 +108,13 @@ stegcracker image.jpg wordlist.txt
 
 ## 4.3 PE File Analysis
 
+### What It Does
+
+A PE file (Portable Executable — any Windows `.exe` or `.dll`) can be inspected without running it to learn who built it, whether it's hidden/packed, and its version. It's like reading the label on a package instead of opening it.
+
 ### Detect It Easy (DIE)
+
+DIE scans an executable and tells you which compiler made it and whether it's "packed" (compressed/obfuscated to hide its real code).
 
 ```bash
 DIE filename.exe                        # GUI mode
@@ -101,8 +123,8 @@ detect-it-easy filename.exe             # Command line
 
 **What to look for:**
 - Compiler: Microsoft Visual C++, Borland Delphi, etc.
-- Packer: UPX, Themida, etc. (suspicious)
-- Entropy: Normal ~4.2, Packed ~7.5
+- Packer: UPX, Themida, etc. (a packer hides the real code — suspicious)
+- Entropy (a measure of randomness): Normal ~4.2, Packed ~7.5 (high randomness usually means packed/encrypted)
 - File Version: In properties tab
 
 ### CFF Explorer
@@ -122,8 +144,10 @@ GUI-based tool for:
 
 ### Command-Line Analysis
 
+If you don't have the GUI tools, you can pull the same clues from the terminal — readable text, headers, and metadata baked into the file.
+
 ```bash
-# Extract strings
+# Extract readable text from the binary (often hides version, URLs, commands)
 strings Ghostware.exe | grep -i version
 strings Ghostware.exe | grep -E "(http|ftp|cmd|exec)"
 
@@ -142,7 +166,7 @@ exiftool Ghostware.exe | grep -i version
 
 ### What It Does
 
-VeraCrypt mounts an encrypted volume/container as a normal drive once you supply the password. CEH practical typically gives you a container file + password, then asks **how many files are inside**.
+VeraCrypt mounts an encrypted volume/container as a normal drive once you supply the password. Think of the container as a locked safe — once unlocked, its contents show up like any other drive letter. CEH practical typically gives you a container file + password, then asks **how many files are inside**.
 
 ```bash
 # Mount volume (CLI)
@@ -166,7 +190,9 @@ veracrypt --mount volume.hc /mnt/encrypted --password=test
 
 ## 4.5 File & Text Decryption Tools (CEH Lab GUI)
 
-These are Windows GUI tools used in CEH iLabs encryption challenges. Each gives you a file/text + a password; you produce the plaintext.
+These are Windows GUI tools used in CEH iLabs encryption challenges. Each gives you a file/text + a password; you produce the plaintext (the original readable content).
+
+> **In plain English:** all three do the same thing — take scrambled data plus the right password and hand back the readable original. They just handle different formats: AES Tool for `.aes` files, BCTextEncoder for blocks of encoded text, CrypTool for picking a specific algorithm.
 
 ### AES Tool — Decrypt a `.aes` File
 

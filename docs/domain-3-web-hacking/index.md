@@ -221,26 +221,42 @@ sqlmap -u "http://192.168.1.5/page.php?id=1" --os-shell
 
 ## 3.2 Web Directory Enumeration
 
+### What It Does
+
+Web servers often have hidden pages and folders (admin panels, backups, config files) that aren't linked anywhere. Directory enumeration finds them by trying thousands of common names and seeing which ones exist.
+
+Like rattling every doorknob in a building to find the one room they forgot to lock.
+
 ### Nikto
 
+Nikto scans a web server for known problems — outdated software, dangerous default files, and misconfigurations — in one pass.
+
 ```bash
-nikto -h http://192.168.1.5
-nikto -h 192.168.1.5 -p 8080
-nikto -h http://192.168.1.5 -o report.txt
+nikto -h http://192.168.1.5            # scan the web server
+nikto -h 192.168.1.5 -p 8080           # scan a non-standard port
+nikto -h http://192.168.1.5 -o report.txt   # save results to a file
 ```
 
 ### Robuster
 
+Robuster brute-forces directory and file names using a wordlist (a list of common names to try) and reports the ones that exist on the server.
+
 ```bash
-robuster dir -u http://192.168.1.5 -w /usr/share/wordlists/dirb/common.txt
-robuster dir -u http://192.168.1.5 -w wordlist.txt
+robuster dir -u http://192.168.1.5 -w /usr/share/wordlists/dirb/common.txt   # use a built-in wordlist
+robuster dir -u http://192.168.1.5 -w wordlist.txt                           # use your own wordlist
 ```
 
 ---
 
 ## 3.3 Parameter Tampering
 
-Use Burp Suite to:
+### What It Does
+
+Parameter tampering means changing values the app sends in a request — like a price or a user ID — before the server receives them. If the server trusts whatever the browser sends, you can rewrite it in your favor.
+
+Like editing the price tag at checkout and hoping the cashier doesn't look.
+
+Use Burp Suite (a proxy that sits between your browser and the server so you can pause and edit requests) to:
 1. Enable proxy capture
 2. Intercept request
 3. Modify parameters
@@ -256,12 +272,18 @@ Modified: http://site.com/purchase.php?item=shirt&price=1
 
 ## 3.4 WordPress Scanning
 
+### What It Does
+
+WPScan checks a WordPress site for weaknesses — it lists valid usernames, and finds installed plugins and themes (often the buggiest, most outdated parts) so you know what to attack.
+
+> **Exam tip:** Vulnerable plugins are the most common way into a WordPress site. Enumerate them first.
+
 ```bash
-wpscan --url http://target.com --enumerate u              # Users
-wpscan --url http://target.com --enumerate p              # Plugins
-wpscan --url http://target.com --enumerate t              # Themes
-wpscan --url http://target.com --enumerate all            # All
-wpscan --url http://target.com -U admin -P rockyou.txt    # Brute force
+wpscan --url http://target.com --enumerate u              # find valid usernames
+wpscan --url http://target.com --enumerate p              # find installed plugins
+wpscan --url http://target.com --enumerate t              # find installed themes
+wpscan --url http://target.com --enumerate all            # all of the above
+wpscan --url http://target.com -U admin -P rockyou.txt    # guess admin's password from a wordlist
 ```
 
 ---

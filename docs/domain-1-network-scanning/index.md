@@ -30,7 +30,9 @@ Network scanning is the foundation of every penetration test. You need to discov
 ## 1.1 Host Discovery - Finding Live Machines
 
 ### What It Does
-Identifies which IP addresses have active machines on them. Scans a network range and returns all responding hosts.
+Finds which IP addresses have a real machine answering on them. You point it at a whole range of addresses, and it tells you which ones are alive — so you don't waste time poking at empty addresses.
+
+> **In plain English:** It's a roll call — you shout "who's there?" across the network and note who answers.
 
 ### NMAP Ping Scan
 ```bash
@@ -70,24 +72,29 @@ Host is up (0.0045s latency).
 
 ## 1.2 Port Scanning - What Services Are Running
 
+### What It Does
+A port (a numbered "door" a service listens on) is how machines offer things like web pages or file sharing. Port scanning knocks on those doors to see which are open and what's behind them.
+
+> **In plain English:** Host discovery found which houses have people home; port scanning checks which doors and windows are unlocked.
+
 ### The Three Main Scan Types
 
 **TCP Connect Scan (Full Connection)**
 ```bash
 nmap -sT -v 192.168.1.5
 ```
-- Complete three-way handshake
+- Completes the full three-way handshake (the normal SYN → SYN-ACK → ACK "hello" two machines exchange to start a TCP connection)
 - Slowest but most reliable
-- Leaves logs on target
+- Leaves logs on target (the target sees a real connection)
 - Use when you're not worried about stealth
 
 **TCP SYN Scan (Half-Open / Stealthy)**
 ```bash
 nmap -sS -v 192.168.1.5
 ```
-- Sends SYN, waits for SYN-ACK, sends RST (no completion)
+- Sends SYN, waits for SYN-ACK, then sends RST to drop it before the handshake finishes — so the connection is never fully made
 - Faster than full connect
-- Less logging on older systems
+- Less logging on older systems (the half-open knock often isn't recorded)
 - Preferred for most scans
 
 **UDP Scan**
@@ -122,6 +129,8 @@ nmap --open 192.168.1.5
 
 ### Understanding Port States
 
+Every port nmap reports comes back in one of these states. This tells you whether there's something worth attacking.
+
 | State | Meaning | Action |
 |-------|---------|--------|
 | **Open** | Service is listening and accepting connections | Exploit or enumerate |
@@ -136,7 +145,7 @@ nmap --open 192.168.1.5
 ## 1.3 Service Version Detection
 
 ### What It Does
-Identifies specific software and version numbers running on open ports.
+A plain port scan tells you a door is open; version detection tells you *exactly* which software and version is behind it (e.g. "Apache 2.4.6", not just "a web server").
 
 ```bash
 nmap -sV 192.168.1.5
@@ -144,7 +153,7 @@ nmap -sV 192.168.1.5
 
 **Breakdown:**
 - `-sV` = Version detection
-- Connects to each open port and fingerprints the service
+- Connects to each open port and fingerprints the service (compares the responses against a database to identify the exact software)
 - Returns software name and version
 - Takes longer than basic port scan
 
@@ -178,7 +187,9 @@ nmap -A -T4 -p- 192.168.1.5
 ## 1.4 SMB Enumeration - Windows Shared Resources
 
 ### What It Does
-Discovers Windows file shares, users, and domain information.
+SMB (Server Message Block — the protocol Windows uses to share files, printers, and folders) often hands over user names, shared folders, and domain details, sometimes without any password at all. This step squeezes that info out of it.
+
+> **In plain English:** It's like reading the names on every mailbox and which doors are unlocked in a Windows apartment building.
 
 #### NMAP SMB Scripts
 
@@ -259,9 +270,9 @@ enum4linux -u admin -p password123 -a 192.168.1.5
 ## 1.5 SNMP Enumeration
 
 ### What It Does
-Queries network devices (routers, printers, servers) for configuration info.
+SNMP (Simple Network Management Protocol — how admins remotely monitor and manage devices) can be asked to dump a device's configuration, running processes, and more.
 
-SNMP is like a public information billboard for network devices. Many admins leave it with default credentials.
+SNMP is like a public information billboard for network devices: routers, printers, and servers. Many admins leave it with default credentials, so you can often just walk up and read it.
 
 ```bash
 # Basic SNMP check
@@ -274,7 +285,7 @@ snmp-check 192.168.1.5
 onesixtyone 192.168.1.0/24
 ```
 
-**Common SNMP Community Strings (Passwords):**
+**Common SNMP Community Strings (basically the password SNMP uses — guess these first):**
 - `public` (read-only, default)
 - `private` (read-write)
 - `community`
@@ -285,7 +296,7 @@ onesixtyone 192.168.1.0/24
 ## 1.6 DNS Enumeration
 
 ### What It Does
-Maps domain names to IP addresses and discovers subdomains.
+DNS (Domain Name System — the internet's phone book that turns names like `target.com` into IP addresses) can be queried to map names to IPs and uncover hidden subdomains.
 
 ```bash
 # DNS lookup
@@ -294,7 +305,7 @@ nslookup target.com
 # More detailed DNS lookup
 dig target.com
 
-# Zone transfer attempt (finds all DNS records)
+# Zone transfer attempt — if misconfigured, dumps the server's ENTIRE list of DNS records at once
 dig @ns1.target.com target.com axfr
 
 # Reverse DNS lookup (IP to hostname)
